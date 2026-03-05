@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DR KAMRAN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  
+
+<style>
+    /* ---------------------------------------------------------------------- */
+    /* *** COLOR & GLOW CONTROL (FOUR CORNER STYLISH NEON LIGHT EFFECT) *** */
+    /* ---------------------------------------------------------------------- */
+    :root {
+      /* Base colors for the entire UI */
+      --primary-color: #FF1493; /* Deep Neon Pink for primary highlights */
+      --secondary-color: #F0F0F0; /* Light Gray for backgrounds */
+      --accent-color: #1E90FF; /* Electric Blue for text highlights */
+      --text-color: #222222; /* Dark Text */
+      --background-color: #FFFFFF; /* Pure White */
+      --container-bg-color: #FFFFFF; 
+      --input-bg-color: #F8F8FF; 
+      --input-text-color: #222222; 
+      --hover-color: #FF44FF; 
+      --border-color: rgba(255, 20, 147, 0.5); /* Neon Pink Border */
+      --shadow-color: rgba(255, 20, 147, 0.4); 
+      
+      /* Unique Neon Colors for Each Corner Light (Stylish and Distinct) */
+      --glow-base-1: #FF00FF; /* Top-Left: Electric Magenta */
+      --glow-base-2: #00FF00; /* Bottom-Right: Neon Green */
+      --glow-base-3: #FFFF00; /* Top-Right (Star 1): Neon Yellow */
+      --glow-base-4: #00FFFF; /* Bottom-Left (Star 2): Bright Cyan */
+      
+      --button-gradient: linear-gradient(135deg, #FF00FF, #00FFFF); /* Transition between Magenta and Cyan */
+    }
+
+    /* Keyframes for dramatic, HYPER FAST blinking (light on/off) */
+    @keyframes pulseGlow {
+        0% { box-shadow: 0 0 10px rgba(255, 20, 147, 0.3); } 
+        50% { box-shadow: 0 0 50px rgba(255, 20, 147, 1.0); } 
+        100% { box-shadow: 0 0 10px rgba(255, 20, 147, 0.3); } 
+    }
+
+    /* Keyframes for HYPER FAST color cycling (applied to light sources) */
+    @keyframes colorCycle {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      background-image: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 1. Corner Light (Top Left) - Electric Magenta Base */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -300px; 
+      left: -300px; 
+      width: 800px; 
+      height: 800px;
+      background: radial-gradient(circle, var(--glow-base-1) 0%, transparent 60%);
+      opacity: 0.6; 
+      z-index: -2; 
+      filter: blur(300px); 
+      /* Different speed for distinct look */
+      animation: colorCycle 1.3s infinite linear, pulseGlow 0.6s infinite alternate; 
+    }
+
+    /* 2. Corner Light (Bottom Right) - Neon Green Base */
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -300px; 
+      right: -300px; 
+      width: 800px; 
+      height: 800px;
+      background: radial-gradient(circle, var(--glow-base-2) 0%, transparent 60%);
+      opacity: 0.6; 
+      z-index: -2; 
+      filter: blur(300px);
+       /* Different speed for distinct look */
+      animation: colorCycle 1.6s infinite linear, pulseGlow 0.8s infinite alternate; 
+    }
+
+    /* 3. Decoration (Star 1: Top Right) - Neon Yellow Base */
+    .star {
+      position: absolute;
+      width: 150px; 
+      height: 150px;
+      border-radius: 50%;
+      opacity: 0.4; 
+      z-index: -1;
+      filter: blur(50px); 
+    }
+
+    .star-1 {
+      top: 0px; 
+      right: 0px;
+      background: radial-gradient(circle, var(--glow-base-3), transparent 60%); 
+      /* Different speed for distinct look */
+      animation: colorCycle 1.0s infinite linear, pulseGlow 0.5s infinite alternate; 
+    }
+
+    /* 4. Decoration (Star 2: Bottom Left) - Bright Cyan Base */
+    .star-2 {
+      bottom: 0px; 
+      left: 0px;
+      background: radial-gradient(circle, var(--glow-base-4), transparent 60%); 
+       /* Different speed for distinct look */
+      animation: colorCycle 1.9s infinite linear, pulseGlow 0.7s infinite alternate; 
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: var(--container-bg-color); 
+      border-radius: 16px;
+      padding: 25px;
+      /* Main Card Glow/Pulse */
+      box-shadow: 0 10px 50px var(--shadow-color), 0 0 40px var(--shadow-color); 
+      border: 1px solid var(--border-color); 
+      position: relative;
+      overflow: hidden;
+      animation: pulseGlow 0.5s infinite alternate; 
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: var(--button-gradient);
+      animation: colorCycle 1s infinite linear;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 16px;
+      background: var(--button-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      box-shadow: 0 0 30px rgba(255, 20, 147, 0.9), 0 0 60px rgba(255, 20, 147, 0.6); 
+      animation: pulseGlow 0.5s infinite alternate, colorCycle 1s infinite linear; 
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent-color); 
+      text-shadow: 0 0 8px var(--secondary-color), 0 0 15px var(--primary-color); 
+      animation: colorCycle 1.5s infinite linear;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #6B7280; 
+      margin-bottom: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); 
+    }
+
+    /* Fixed social icon colors for recognition */
+    .social-icons a.youtube { background: #FF0000; } 
+    .social-icons a.telegram { background: #0088cc; }
+    .social-icons a.whatsapp { background: #25D366; } 
+    .social-icons a.github { background: #333; }
+
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 30px var(--shadow-color); 
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--accent-color); 
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px;
+      border: 1.5px solid var(--secondary-color); 
+      border-radius: 12px;
+      background: var(--input-bg-color); 
+      color: var(--input-text-color); 
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 6px rgba(255, 20, 147, 0.7); 
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--button-gradient);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(255, 20, 147, 0.7); 
+      animation: pulseGlow 0.5s infinite alternate, colorCycle 1s infinite linear; 
+    }
+
+    .generate-btn:hover {
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 30px rgba(255, 20, 147, 1.0); 
+      background: linear-gradient(135deg, #FF44FF, #33D3FF); 
+    }
+
+    .code-display {
+      background: var(--input-bg-color); 
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--secondary-color); 
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.4); 
+      color: var(--accent-color); 
+    }
+
+    .copy-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-color); 
+      border: 1.5px solid var(--accent-color);
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: white; 
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 15px rgba(255, 20, 147, 0.6);
+    }
+
+    .copy-btn:hover {
+      background: var(--hover-color);
+      box-shadow: 0 4px 25px rgba(255, 20, 147, 1.0); 
+    }
+
+    .success-message {
+      color: #10B981; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+    }
+
+    .error-message {
+      color: #EF4444; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .loading i {
+      font-size: 24px;
+      color: var(--primary-color);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #9CA3AF; 
+    }
+
+    /* Toast styles */
+    #toast {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-color);
+      color: white; 
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(255, 20, 147, 0.8);
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: colorCycle 1s infinite linear; 
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .code-display {
+        font-size: 16px;
+        min-height: 50px;
+      }
+    }
+
+    /* Dark Night Button */
+    .dark-mode-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: var(--accent-color); 
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="star star-1"></div>
+  <div class="star star-2"></div>
+
+<button class="dark-mode-toggle" id="darkModeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo"><i class="fas fa-robot"></i></div>
+      <h1 class="title">DR KAMRAN Pair</h1>
+      <p class="subtitle">Generate your WhatsApp pair code</p>
+      <div class="social-icons">
+        <a href="https://www.youtube.com/@drkamranbot-md" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://github.com/KAMRAN-SMD/KAMRAN-MD" target="_blank" class="telegram"><i class="fab fa-github"></i></a>
+        <a href="https://whatsapp.com/channel/0029VbAhxYY90x2vgwhXJV3O" target="_blank" class="whatsapp"><i class="fas fa-phone"></i></a>
+        <a href="https://github.com/KAMRAN-SMD/KAMRAN-MD" target="_blank" class="github"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label class="input-label">Enter your WhatsApp number with country code</label>
+      <input type="tel" id="mobileNumber" class="input-field" placeholder="923195068309" pattern="[0-9]{8,}" title="Please enter your full phone number including country code">
+      <p style="font-size: 12px; color: var(--accent-color); margin-top: 5px;">Example: <span style="font-weight: bold;">923195068309</span> (92 for Pakistan)</p>
+    </div>
+
+    <button class="generate-btn" id="submit">
+      <i class="fas fa-key"></i> Generate Pair Code
+    </button>
+
+    <div class="loading" id="loading">
+      <i class="fas fa-spinner"></i>
+    </div>
+
+    <div class="code-display" id="codeDisplay">
+      Your pair code will appear here
+    </div>
+
+    <button class="copy-btn" id="copy" onclick="copyCode()">
+      <i class="fas fa-copy"></i> Copy Code
+    </button>
+
+    <div class="footer">
+      <p>© 2026 DR KAMRAN | KAMRAN-MD</p>
+    </div>
+  </div>
+
+  
+
+<div id="toast">Code copied to clipboard!</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    // Axios URL is relative/hypothetical. It is kept as is.
+    document.getElementById("submit").addEventListener("click", async (e) => {
+      e.preventDefault();
+      const mobileNumberInput = document.getElementById("mobileNumber");
+      const codeDisplay = document.getElementById("codeDisplay");
+      const loadingSpinner = document.getElementById("loading");
+
+      const mobileNumber = mobileNumberInput.value.trim();
+      if (!mobileNumber) {
+        codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter your WhatsApp number</div>';
+        document.getElementById("copy").style.display = "none";
+        return;
+      }
+
+      loadingSpinner.style.display = "block";
+      codeDisplay.innerHTML = '';
+      document.getElementById("copy").style.display = "none";
+
+      try {
+        // Implementing exponential backoff logic for retries
+        const maxRetries = 3;
+        let response;
+
+        for (let i = 0; i < maxRetries; i++) {
+          try {
+            // NOTE: The URL /code?number=... is relative and depends on your server setup.
+            response = await axios(`/code?number=${mobileNumber.replace(/[^0-9]/g, "")}`);
+            break; // Success, exit loop
+          } catch (error) {
+            if (i === maxRetries - 1) throw error;
+            const delay = Math.pow(2, i) * 1000;
+            // Retry delay
+            await new Promise(resolve => setTimeout(resolve, delay));
+          }
+        }
+        
+        const code = response.data.code || "Service Unavailable";
+        if (code === "Service Unavailable") {
+          codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Service Unavailable</div>';
+        } else {
+          codeDisplay.innerHTML = `<div class="success-message"><i class="fas fa-check-circle"></i> CODE: ${code}</div>`;
+          document.getElementById("copy").style.display = "flex";
+        }
+      } catch (error) {
+        console.error("Error generating code:", error);
+        codeDisplay.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-circle"></i> Error generating code. Please try again.</div>';
+      } finally {
+        loadingSpinner.style.display = "none";
+      }
+    });
+
+    // Function to copy the generated code to the clipboard
+    function copyCode() {
+      const codeDisplay = document.getElementById("codeDisplay").innerText;
+      const code = codeDisplay.replace('CODE: ', '');
+      const copyBtn = document.getElementById("copy");
+
+      // Use document.execCommand('copy') for better compatibility in iframe environments
+      const tempInput = document.createElement('textarea');
+      tempInput.value = code;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      // Show success message and toast
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      copyBtn.disabled = true;
+      copyBtn.style.opacity = "0.6";
+      copyBtn.style.cursor = "not-allowed";
+
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      toast.style.opacity = "1";
+
+      setTimeout(() => {
+        copyBtn.innerHTML = originalText;
+        copyBtn.disabled = false;
+        copyBtn.style.opacity = "1";
+        copyBtn.style.cursor = "pointer";
+
+        toast.style.opacity = "0";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 300);
+      }, 2000);
+    }
+
+    // Dark mode toggle functionality (Note: This is currently disabled)
+    document.getElementById('darkModeToggle').addEventListener('click', function() {
+      // The toggle is disabled as the core theme was requested to be light.
+      alert('This button is reserved for implementing a dark mode switch.');
+    });
+  </script>
+</body>
+</html>

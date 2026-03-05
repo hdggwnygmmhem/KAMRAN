@@ -1,0 +1,20 @@
+{
+  "name": "Erfan Web Pair",
+  "description": "Web Session Generator",
+  "logo": "",
+  "repository": "https://github.com/KAMRAN-SMD/pair-kamr",
+  "keywords": ["KAMRAN"],
+  "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "PORT": {
+      "description": "Port for web app (4000, 5000, 3000 etc)",
+      "value": "5000",
+      "required": false
+    }
+  }
+}
