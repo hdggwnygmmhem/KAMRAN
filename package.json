@@ -9,8 +9,8 @@
     "restart": "pm2 restart KAMRAN-MD"
   },
   "dependencies": {
-"@whiskeysockets/baileys": "7.0.0-rc.9",
-      "jimp": "^1.6.0",
+"@whiskeysockets/baileys": "npm:wileys",
+      "jimp": "^0.16.1",
     "@adiwajshing/keyed-db": "^0.2.4",
     "qrcode": "^1.5.4",
     "awesome-phonenumber": "^7.5.0",
